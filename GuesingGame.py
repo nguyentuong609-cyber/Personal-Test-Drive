@@ -8,7 +8,7 @@ while True:
         user_guess = input("Enter a number to guess from (1 - 10) or (done) to exit: ")
         if user_guess == "done":
             print("Thanks for playing")
-            exit()
+            break
 
         try:
             user_guess = int(user_guess)
@@ -27,3 +27,4 @@ while True:
     if play_again not in ("yes", "y"):
         print("Thanks for playing")
         break
+
