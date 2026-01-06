@@ -1,35 +1,29 @@
 import random
-print("Welcome to the guessing game")
+
 while True:
-    win_number = int(random.randint(1,10))
-    attemps = 0
+    win_number = random.randint(1,10)
+    attempt = 0
 
     while True:
-        user_number = input("Insert the number you think is correct or done to quit the game: ")
-
-        if user_number == "done":
+        user_guess = input("Enter a number to guess from (1 - 10) or (done) to exit: ")
+        if user_guess == "done":
             print("Thanks for playing")
-            break
+            exit()
 
         try:
-            user_number = int(user_number)
-            attemps += 1
-            if user_number > win_number:
-                print("Too High")
-                print(f"Your attemp is {attemps}")
-            elif user_number < win_number:
-                print("Too low")
-                print(f"Your attemp is {attemps}")
-            elif user_number == win_number:
-                print("Correct")
-                print(f"Your attemp is {attemps}")
+            user_guess = int(user_guess)
+            attempt += 1
+            if user_guess < win_number:
+                print(f"Too Low, try again. #{attempt}")
+            elif user_guess > win_number:
+                print(f"Too High, try again. #{attempt}")
+            elif user_guess == win_number:
+                print(f"Correct! It took {attempt} attempt{'s' if attempt != 1 else ''} to guess!")
                 break
-            else:
-                print("Invalid")
         except ValueError:
             print("Invalid")
-    
-    play_again = input("Would you like to play again? (Y/N): ")
-    if play_again == "N":
+
+    play_again = input("Would you like to play again? (Y/N)").lower()
+    if play_again not in ("yes", "y"):
         print("Thanks for playing")
         break
