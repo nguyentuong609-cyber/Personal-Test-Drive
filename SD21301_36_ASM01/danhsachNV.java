@@ -11,18 +11,6 @@ import java.util.Comparator;
  * @author ADMIN
  */
 public class danhsachNV {
-    static void promptEnterKey(){
-        System.out.println("Nhap \"ENTER\" de tiep tuc...");
-        Scanner sc = new Scanner(System.in);
-        sc.nextLine();
-    }
-
-    static void clearScreen() {
-        for (int i = 0; i < 30; i++) {
-            System.out.println();
-        }
-    }
-
     ArrayList<NhanVien> dsnv = new ArrayList<>();
     
     public void nhapDanhSachNV(){
@@ -166,7 +154,7 @@ public class danhsachNV {
         System.out.print("Nhap ma nhan vien can xoa: ");
         String maCanXoa = s.nextLine();
 
-        boolean timThay = false;
+        boolean found = false;
 
         for(int i = 0; i < dsnv.size(); i++){
             if(dsnv.get(i).getMaNV().equalsIgnoreCase(maCanXoa)){
@@ -184,12 +172,12 @@ public class danhsachNV {
                     System.out.println("Huy bo xoa nhan vien.");
                 }
 
-                timThay = true;
+                found = true;
                 break;
             }
         }
 
-        if(!timThay){
+        if(!found){
             System.out.println("Khong tim thay nhan vien");
         }
     }
