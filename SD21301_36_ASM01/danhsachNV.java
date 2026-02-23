@@ -147,6 +147,7 @@ public class danhsachNV {
         if(!found){
             System.out.println("Khong tim thay nhan vien phu hop voi dieu kien");
         }
+        s.close();
     }
 
     public void xoaNhanVien(){
@@ -178,11 +179,48 @@ public class danhsachNV {
         }
 
         if(!found){
-            System.out.println("Khong tim thay nhan vien");
+            System.out.println("Khong tim thay nhan vien voi ma " +maCanXoa);
         }
+        s.close();
     }
 
     public void capNhatThongTin(){
+        Scanner s = new Scanner(System.in);
+        System.out.print("Nhap ma nhan vien can nhat: ");
+        String maTim = s.nextLine();
+
+        boolean found = false;
+
+        for(int i = 0; i < dsnv.size(); i ++){
+            if(dsnv.get(i).getMaNV().equalsIgnoreCase(maTim)){
+                System.out.println("\nThong tin nhan vien hien tai:");
+                dsnv.get(i).xuat();
+                System.out.println("");
+
+
+                System.out.print("\n Ban co muon cap nhat nhan vien nay? (Y/N): ");
+                String xacNhan = s.nextLine();
+
+                if(xacNhan.equalsIgnoreCase("n")){
+                    System.out.println("\n Huy cap nhat");
+                }
+                else{
+                    dsnv.get(i).nhap();
+                    System.out.println("Cap nhat thanh cong!");
+                    System.out.println("Thong tin nhan vien sau khi cap nhat");
+                    dsnv.get(i).xuat();
+                }
+                found = true;
+                break;
+            }
+        }
+
+        if(!found){
+            System.out.println("Khong tiem duoc nhan vien voi ma: " + maTim);
+        }
+    }
+
+    public void capNhatThongTin2(){
         Scanner s = new Scanner(System.in);
         System.out.print("Nhap ma nhan vien can cap nhat: ");
         String maCanCapNhat = s.nextLine();
@@ -261,6 +299,7 @@ public class danhsachNV {
         if(!found){
             System.out.println("Khong tim thay nhan vien voi ma: " + maCanCapNhat);
         }
+        s.close();
     }
 
     public void sapXepTheoHoTen(){
