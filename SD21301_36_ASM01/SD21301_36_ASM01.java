@@ -45,6 +45,7 @@ public class SD21301_36_ASM01 {
             clearScreen();
             menu();
             choice = s.nextInt();
+            s.nextLine();
             clearScreen();
             
             switch(choice){
@@ -76,8 +77,8 @@ public class SD21301_36_ASM01 {
                         ds.timNhanVienTheoMa();
 
                         System.out.print("\nBan co muon tiep tuc tim kiem? (Y/N): ");
-                        Scanner sc = new Scanner(System.in);
-                        String tiepTuc = sc.nextLine();
+
+                        String tiepTuc = s.nextLine();
 
                         if(tiepTuc.equalsIgnoreCase("N")){
                             break;
@@ -93,8 +94,7 @@ public class SD21301_36_ASM01 {
                         ds.xoaNhanVien();
                         System.out.println("");
                         System.out.print("\nBan co muon xoa them khong? (Y/N): ");
-                        Scanner sc = new Scanner(System.in);
-                        String tiepTuc = sc.nextLine();
+                        String tiepTuc = s.nextLine();
 
                         if(tiepTuc.equalsIgnoreCase("N")){
                             break;
@@ -111,8 +111,7 @@ public class SD21301_36_ASM01 {
                         ds.capNhatThongTin();
                         System.out.println("");
                         System.out.print("\nBan co muon cap nhat them khong? (Y/N): ");
-                        Scanner sc = new Scanner(System.in);
-                        String tiepTuc = sc.nextLine();
+                        String tiepTuc = s.nextLine();
 
                         if(tiepTuc.equalsIgnoreCase("N")){
                             break;
@@ -120,13 +119,21 @@ public class SD21301_36_ASM01 {
                     }while(true);
                     break;
                 case 6:
-                    clearScreen();
-                    System.out.println("Ban da chon cong thuc so 6\n");
-                    System.out.println("6. Tim nhan vien theo quan luong");
-                    System.out.println("");
-                    ds.timNhanVienTheoLuong();
-                    System.out.println("");
-                    promptEnterKey();
+                    do{
+                        clearScreen();
+                        System.out.println("Ban da chon cong thuc so 6\n");
+                        System.out.println("6. Tim nhan vien theo quan luong");
+                        System.out.println("");
+                        ds.timNhanVienTheoLuong();
+                        System.out.println("");
+                        System.out.print("\nBan co muon cap nhat them khong? (Y/N): ");
+                        String tiepTuc = s.nextLine();
+
+                        if(tiepTuc.equalsIgnoreCase("N")){
+                            break;
+                        }
+
+                    }while(true);
                     break;
                 case 7:
                     clearScreen();
